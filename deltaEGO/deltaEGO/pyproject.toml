@@ -1,0 +1,13 @@
+[project]
+name = "deltaEGO"
+version = "0.1.0"
+description = "The main orchestration class for deltaEGO."
+requires-python = ">=3.7"
+
+dependencies = [
+    "deltaego-searcher >= 0.1.0",
+    "deltaego-compute >= 0.1.0"
+]
+
+[tool.setuptools]
+packages = ["deltaEGO"]
