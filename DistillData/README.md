@@ -105,6 +105,15 @@ except Exception as e:
         time.sleep(60)  # Exponential Backoff strategy
 ```
 ---
+
+## Key Features
+
+* **Smart Filtering:** Uses a prompt-engineered LLM judge (*"You are an expert psychologist..."*) to filter noise.
+* **Fault Tolerance:** Handles `RateLimitError` and network jitters with exponential backoff.
+* **Checkpoint System:** Auto-saves progress (`json` serialization) to resume operations in case of unexpected container termination.
+
+---
+
 ## Lessons Learned: Cloud Cost Management
 
 > **"A coding error in the cloud can cost real money. I learned this the hard way."**
@@ -129,23 +138,17 @@ if output_filepath.exists():
 * **Outcome**: Now, even if the container restarts or the script is re-triggered accidentally, it checks for the existence of the final dataset (filtered_emotion_lexicon.json) and terminates immediately without making a single API call.
 
 ---
-
-## Key Features
-
-* **Smart Filtering:** Uses a prompt-engineered LLM judge (*"You are an expert psychologist..."*) to filter noise.
-* **Fault Tolerance:** Handles `RateLimitError` and network jitters with exponential backoff.
-* **Checkpoint System:** Auto-saves progress (`json` serialization) to resume operations in case of unexpected container termination.
-
 ## Usage
 
 ```bash
-# 1. Place the raw NRC-VAD-Lexicon.txt in this folder
+# 1. Place the raw NRC-VAD-Lexicon.txt in the folder named Original. It should be .txt
 # 2. Build the Docker image
 docker build -t vad-distiller .
 
 # 3. Run the container
 docker run -d -v $(pwd):/app vad-distiller
 ```
+
 
 
 
