@@ -12,6 +12,10 @@
 
 **Rapid Engineering:** The core C++ engine was architected and integrated in a **2-week sprint** to resolve critical latency bottlenecks in a larger AI orchestration system.
 
+> ⚠️ **Disclaimer: Data & Copyright**
+> * **Code Only:** This repository contains **source code only**. The original production repository includes the processed dataset but remains **private** to comply with the [NRC-VAD Lexicon](https://saifmohammad.com/WebPages/nrc-vad.html) terms of use and copyright restrictions.
+> * **Bring Your Own Data:** To run this engine, you must obtain the raw NRC-VAD Lexicon license independently and run the provided distillation pipeline to generate your own vector dataset.
+
 ---
 
 ## Key Features
@@ -92,12 +96,23 @@ This project was built with an **AI-Assisted Engineering** approach to maximize 
 
 ## Installation
 
+Since the dataset is excluded due to copyright, you must generate it first.
+### 1. Prepare Data (Mandatory)
+* Download the raw NRC-VAD Lexicon (.txt) from the official source.
+* Place it in the DistillData/ folder.
+* Run the distillation script to generate the vector JSON:
+  ```bash
+  cd DistillData
+  python distillation.py
+  ```
+### 2. Install Python dependencies
 ```bash
-# 1. Install Python dependencies
 pip install -r requirements.txt
-
-# 2. Build C++ extensions (requires CMake)
+```
+### 3. Build C++ extensions (requires CMake)
+```bash
 cd deltaEGO
 mkdir build && cd build
 cmake ..
 make
+```
