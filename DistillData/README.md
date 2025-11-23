@@ -140,14 +140,38 @@ if output_filepath.exists():
 ---
 ## Usage
 
+### 1. Setup Configuration
+Create a ```config.py``` file in the root directory with your OpenAI credentials:
+```python
+   # config.py
+   API_CONFIG = {
+       "OPENAI_API_KEY": "your-sk-key-here",
+       "MODEL_NAME": "gpt-4o-mini"
+   }
+```
+
+### 2. Prepare Data
+Place the raw lexicon file in the ```Original``` directory:
+```plaintext
+DistillData/
+├── Original/
+│   └── NRC-VAD-Lexicon-v2.1.txt  <-- Place here
+├── config.py
+└── distillation.py
+```
+
+### 3. Run with Docker
 ```bash
-# 1. Place the raw NRC-VAD-Lexicon.txt in the folder named Original. It should be .txt
-# 2. Build the Docker image
+# Build the image
 docker build -t vad-distiller .
 
-# 3. Run the container
+# Run the container (Mounts current directory to save results)
 docker run -d -v $(pwd):/app vad-distiller
 ```
+
+
+
+
 
 
 
