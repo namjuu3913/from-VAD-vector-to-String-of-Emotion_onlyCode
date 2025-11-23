@@ -78,6 +78,32 @@ graph TD
     style E fill:#FFD43B,stroke:#333
     style K fill:#98FB98,stroke:#333
 ```
+
+## Technical Deep Dive
+
+Here is how I engineered the script to handle real-world constraints.
+
+### 1. The "Psychologist" Prompt Engineering
+To ensure semantic accuracy, I established a **role-playing context** to reduce hallucination.
+
+```python
+# distillation.py
+FILTER_SYSTEM_PROMPT = """You are an expert psychologist. 
+Your task is to judge if a word describes an emotion.
+You MUST respond with ONLY ONE WORD: "Yes" or "No".
+"Happy", "Sad", "Pleased" = "Yes". ("Table", "Industry" = "No")"""
+```
+
+### 2. Handling API Instability
+Running a long-job on the cloud means expecting API outages.
+```python
+try:
+    answer = request_handler.sendMsg(messages)
+except Exception as e:
+    if "rate limit" in str(e).lower():
+        print("Rate limit hit. Sleeping for 60s...")
+        time.sleep(60)  # Exponential Backoff strategy
+```
 ---
 
 ## Key Features
@@ -119,3 +145,4 @@ if output_filepath.exists():
     sys.exit(0)  # Immediate termination to prevent billing loop
 ```
 * **Outcome**: Now, even if the container restarts or the script is re-triggered accidentally, it checks for the existence of the final dataset (filtered_emotion_lexicon.json) and terminates immediately without making a single API call.
+
