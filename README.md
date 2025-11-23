@@ -75,14 +75,20 @@ Each module serves a specific stage in the engineering pipeline:
 
 ---
 
-## 📊 Performance Benchmarks
+## Performance Benchmarks
 
-| Operation | Method | Latency (ms) | Speedup |
+To validate the latency improvements, I benchmarked DeltaEGO against a pure Python implementation and the industry-standard library **Faiss**.
+
+| Method | Avg Latency per Query | Speedup vs Python | Note |
 | :--- | :--- | :--- | :--- |
-| **Vector Search** | Pure Python | NaN | NaN |
-| **Vector Search** | **DeltaEGO (C++)** | **NaN** | **NaN** |
+| **Pure Python** (Linear) | 0.5363 ms | 1x | Too slow for high-frequency ticks |
+| **DeltaEGO** (C++ K-D Tree) | **0.0135 ms** | **~40x** | **Ultra-Low Latency (<15µs)** |
+| **Faiss** (FlatL2) | 0.0049 ms | ~109x | Heavily optimized with AVX/SIMD |
 
-> *Benchmarks run on local environment with dataset size N=NaN.*
+> **Test Environment:**
+> * **Dataset:** 1,534 VAD vectors (Distilled from NRC-Lexicon)
+> * **Queries:** 1,000 random queries (Averaged)
+> * **Result:** DeltaEGO achieves **sub-millisecond latency**, making it perfectly suitable for real-time game loops (60fps+) without the heavy dependency overhead of Faiss.
 
 ---
 
@@ -116,3 +122,4 @@ mkdir build && cd build
 cmake ..
 make
 ```
+
