@@ -27,11 +27,14 @@ My initial concern was that the LLM distillation might have biased the data, eff
 ### 3. Validation against Ground Truth
 To verify this, I compared my 3D plot against the 2D projection distributions documented in the original **NRC-VAD Lexicon paper**.
 
-*(Please insert your 2D projection image here - image_c0ef79.jpg)*
-> **Figure 2:** 2D Projections (Valence-Arousal, Arousal-Dominance) matching the expected distribution.
+![3D Cluster](./images/3d_cluster.png)
+...
+![2D Distribution](./images/2d_distribution.png)
 
-* **Finding:** The original lexicon naturally exhibits this skew. Human emotional vocabulary is not evenly distributed; we have more words for specific states (e.g., negative valence, high arousal) than others.
-* **Conclusion:** The clustering was a **natural linguistic feature**, not a bug. The distilled data preserved the original semantic topology correctly. **Green light for deployment.**
+> **Figure 2:** Reference distribution from NRC-VAD Lexicon (Source: [Saif M. Mohammad](https://saifmohammad.com/WebPages/nrc-vad.html)).
+
+* **Finding:** As seen in the reference plot above, the lexicon naturally exhibits dense clustering.
+* **Conclusion:** The agglomeration in my 3D plot matches the ground truth topology. The data is valid.
 
 ---
 
@@ -65,3 +68,4 @@ python visualize.py
 
 # 3. It will open a browser window with the interactive 3D plot.
 ```
+
