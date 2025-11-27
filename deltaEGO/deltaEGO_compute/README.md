@@ -180,7 +180,16 @@ final_result.cumulative.reward_ratio = n_results.reward_ratio;
 ```
 ---
 ## Analysis Visualization
-![visualization]()
+
+![visualization](./VAD_analysis.png)
+
+Description:
+* Yellow Area: Emotion stability area
+* Green Area: Average Emotion area
+* Blue line and dots: Ai character's emotion history
+* Red dot: Current emotion
+* Green dot: Emotion search results
+
 ---
 ## How this is used by Python (`deltaEGO`)
 
