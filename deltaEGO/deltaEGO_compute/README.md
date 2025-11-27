@@ -179,6 +179,9 @@ final_result.cumulative.stress_ratio = n_results.stress_ratio;
 final_result.cumulative.reward_ratio = n_results.reward_ratio;
 ```
 ---
+## Analysis Visualization
+![visualization]()
+---
 ## How this is used by Python (`deltaEGO`)
 
 On the Python side, the `deltaEGO` wrapper:
