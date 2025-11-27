@@ -140,13 +140,86 @@ The ```flag``` (e.g. ```-S```, ```-B```, ```-E```, ```-D```) controls how much d
 ---
 ## Example result
 When the query is:
-
+```cpp
+    "VAD": {
+      "V": 0.8,
+      "A": 0.3,
+      "D": 0.7
+    }
+```
+the CLI might show:
+```json
+{
+          {
+      "count": 5,
+      "mode": {
+        "d": 0.3,
+        "flag": "B",
+        "input_sim": "gauss_w",
+        "input_visit": "knn",
+        "k": 5
+      },
+      "query": {
+        "A": 0.3,
+        "D": 0.7,
+        "V": 0.8
+      },
+      "result": [
+        {
+          "VAD": {
+            "A": 0.306,
+            "D": 0.69,
+            "V": 0.714
+          },
+          "distance_pow2": 0.0075320000000000135,
+          "emotion": "celebratory",
+          "emotion_simplified": "absolute celebratory",
+          "rank": 1,
+          "similarity_metric": "Whitened / Axis-scaled Gaussian",
+          "similarity_percent": 97
+        },
+      ....
+```
 
 
 Visualization:
-* Input: 
+* Output:
+  
+    ![Input](./search_result.png)
+  
+    **This picture is from prototype version and uses a different flag. It might be a bit different**
 
-    ![Input](./analysis_in.png)
+  
 * Output(visualized)
 
     ![Result in 3D Cluster](./VAD_search.png)
+
+  **Used a different VAD input for this picture**
+
+  ---
+## How the Python layer uses this
+On the Python side, the ```deltaEGO``` class wraps this VDB via ```EGOSearcher```:
+```python
+from deltaEGO_VDB import EGOSearcher
+
+ego_result = self.ego_searcher.search(
+    V=in_VAD["V"],
+    A=in_VAD["A"],
+    D=in_VAD["D"],
+    k=in_VAD["k"],
+    d=in_VAD["dis"],
+    SIGMA=sigma,
+    opt=api_opt,
+)
+```
+This result is:
+  * stored in emotion_history,
+  * linked with a timestamped VADPoint,
+  * optionally passed to the C++ analysis core for deeper metrics.
+
+From an agent’s point of view, the VDB behaves like:
+
+<i>“Given a VAD point, tell me which labeled emotions it is closest to, how similar they are, and give me a human-readable summary like ‘quite cheer’ or ‘mild anger’.”
+
+
+
