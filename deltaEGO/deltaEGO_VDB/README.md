@@ -141,3 +141,12 @@ The ```flag``` (e.g. ```-S```, ```-B```, ```-E```, ```-D```) controls how much d
 ## Example result
 When the query is:
 
+
+
+Visualization:
+* Input: 
+
+    ![Input](./analysis_in.png)
+* Output(visualized)
+
+    ![Result in 3D Cluster](./VAD_search.png)
