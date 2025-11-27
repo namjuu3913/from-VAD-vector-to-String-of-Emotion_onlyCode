@@ -6,6 +6,7 @@
 ![Docker](https://img.shields.io/badge/Deployment-Docker-blue)
 ![Status](https://img.shields.io/badge/Status-Production--Ready-success)
 
+
 > **"Bridging the gap between Psychological Theory and High-Performance Computing."**
 
 **DeltaEGO** is a hybrid Emotion AI engine designed for real-time interactive characters. It combines a **custom C++ K-D Tree Vector Database** for millisecond-latency VAD (Valence, Arousal, Dominance) search with a **psychological computation module** that models stress, dopamine rewards, and emotional lability.
@@ -17,7 +18,10 @@
 > * **Bring Your Own Data:** To run this engine, you must obtain the raw NRC-VAD Lexicon license independently and run the provided distillation pipeline to generate your own vector dataset.
 
 ---
-
+## Parent projects
+* [Delta_ME13_RE](https://github.com/namjuu3913/Delta_me13_RE)
+* [Fuli_experiment](https://github.com/namjuu3913/Fuli_experiment)
+---
 ## Key Features
 
 ### 1. Custom Vector Database (C++ Core)
@@ -123,5 +127,6 @@ mkdir build && cd build
 cmake ..
 make
 ```
+
 
 
