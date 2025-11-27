@@ -42,6 +42,7 @@ Processing the entire dataset required over 10 hours of continuous API calls.
  
 
 ---
+<video src="https://github.com/namjuu3913/from-VAD-vector-to-String-of-Emotion_onlyCode/edit/main/DistillData/Untitledvideo.mp4" width="720" height="352"></video>
 
 ## Pipeline Architecture
 
@@ -168,6 +169,7 @@ docker build -t vad-distiller .
 # Run the container (Mounts current directory to save results)
 docker run -d -v $(pwd):/app vad-distiller
 ```
+
 
 
 
