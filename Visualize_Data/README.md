@@ -28,7 +28,11 @@ My initial concern was that the LLM distillation might have biased the data, eff
 To verify this, I compared my 3D plot against the 2D projection distributions documented in the original **NRC-VAD Lexicon paper**.
 
 ![3D Cluster](./images/3d_cluster.png)
-...
+
+
+![3D Cluster_GIF](./images/VAD.gif)
+
+
 ![2D Distribution](./images/2d_distribution.png)
 
 > **Figure 2:** Reference distribution from NRC-VAD Lexicon (Source: [Saif M. Mohammad](https://saifmohammad.com/WebPages/nrc-vad.html)).
@@ -68,4 +72,5 @@ python visualize.py
 
 # 3. It will open a browser window with the interactive 3D plot.
 ```
+
 
