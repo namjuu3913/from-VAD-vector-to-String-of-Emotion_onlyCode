@@ -102,7 +102,8 @@ This project was built with an **AI-Assisted Engineering** approach to maximize 
 
 ## Installation
 
-Since the dataset is excluded due to copyright, you must generate it first.
+**Since the dataset is excluded due to copyright, you must generate it first.**
+
 ### 1. Prepare Data (Mandatory)
 * Download the raw NRC-VAD Lexicon (.txt) from the official source.
 * Place it in the DistillData/ folder.
@@ -122,4 +123,5 @@ mkdir build && cd build
 cmake ..
 make
 ```
+
 
