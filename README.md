@@ -4,7 +4,7 @@
 ![Python](https://img.shields.io/badge/Python-3.9+-yellow.svg?style=flat&logo=python)
 ![pybind11](https://img.shields.io/badge/Integration-pybind11-green)
 ![Docker](https://img.shields.io/badge/Deployment-Docker-blue)
-![Status](https://img.shields.io/badge/Status-Production--Ready-success)
+
 
 
 > **"Bridging the gap between Psychological Theory and High-Performance Computing."**
